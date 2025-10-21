@@ -32,10 +32,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $correo = trim($_POST["correo"]);
     $telefono = trim($_POST["telefono"]);
 
-    if (empty($nombre))
+    // Validaciones básicas
+    if (empty($nombre)) {
         $errores["nombre"] = "El nombre es obligatorio.";
-    if (empty($correo) || !filter_var($correo, FILTER_VALIDATE_EMAIL))
-        $errores["correo"] = "Correo inválido.";
+    }
+
+    if (empty($correo)) {
+        $errores["correo"] = "El correo es obligatorio.";
+    } elseif (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
+        $errores["correo"] = "El formato del correo no es válido.";
+    }
+
+    // Validación básica de teléfono
+    if (!empty($telefono) && !is_numeric($telefono)) {
+        $errores["telefono"] = "El teléfono debe contener solo números";
+    }
+
+    if (!empty($telefono)) {
+        if (!is_numeric($telefono)) {
+            $errores["telefono"] = "El teléfono debe contener solo números";
+        } elseif (strlen($telefono) != 9) {
+            $errores["telefono"] = "El teléfono debe tener exactamente 9 dígitos";
+        }
+    }
 
     if (empty($errores)) {
         try {
@@ -67,6 +86,7 @@ desconectarBD($pdo);
 <head>
     <meta charset="UTF-8">
     <title>Editar Cliente</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -77,7 +97,7 @@ desconectarBD($pdo);
         Dirección: <input type="text" name="direccion" value="<?= $direccion ?>"><br><br>
         Localidad: <input type="text" name="localidad" value="<?= $localidad ?>"><br><br>
         Correo: <input type="text" name="correo" value="<?= $correo ?>"> <?= $errores["correo"] ?? "" ?><br><br>
-        Teléfono: <input type="text" name="telefono" value="<?= $telefono ?>"><br><br>
+        Teléfono: <input type="text" name="telefono" value="<?= $telefono ?>"> <?= $errores["telefono"] ?? "" ?><br><br>
         <input type="submit" value="Actualizar">
         <a href="index.php">Cancelar</a>
     </form>

@@ -4,7 +4,6 @@ function conectarBD()
     $host = 'localhost';
     $dbname = 'basedatos_clientes';
     $usuario = 'alex';
-    //$password = '1234';
     $password = 'Alex1234!';
 
     try {

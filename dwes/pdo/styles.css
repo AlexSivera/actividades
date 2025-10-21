@@ -1,0 +1,157 @@
+/* style.css - Estilos simplificados con colores naranja, verde y rojo */
+
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+    color: #333;
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+/* Encabezados */
+h1 {
+    color: #d35400;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #d35400;
+    text-align: center;
+}
+
+/* Enlaces */
+a {
+    color: #d35400;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Botones */
+button, input[type="submit"] {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 4px;
+}
+
+button:hover, input[type="submit"]:hover {
+    background-color: #219653;
+}
+
+button[name="cancelar"] {
+    background-color: #e74c3c;
+}
+
+button[name="cancelar"]:hover {
+    background-color: #c0392b;
+}
+
+/* Tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    background: white;
+}
+
+th {
+    background-color: #d35400;
+    color: white;
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+td {
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+/* Formularios */
+form {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 6px;
+    margin: 15px 0;
+    border: 1px solid #e0e0e0;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin: 6px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+input[type="text"]:focus {
+    border-color: #d35400;
+    outline: none;
+}
+
+/* Mensajes de error */
+.errores {
+    color: #e74c3c;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* Alertas */
+.alert {
+    padding: 12px;
+    margin: 15px 0;
+    border-radius: 4px;
+    border: 1px solid;
+}
+
+.alert-success {
+    background-color: #d5f4e6;
+    color: #155724;
+    border-color: #27ae60;
+}
+
+.alert-warning {
+    background-color: #fff3cd;
+    color: #856404;
+    border-color: #ffeaa7;
+}
+
+/* Enlaces de acción */
+.acciones a {
+    margin-right: 8px;
+}
+
+.acciones a:first-child {
+    color: #27ae60;
+}
+
+.acciones a:last-child {
+    color: #e74c3c;
+}
