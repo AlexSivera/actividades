@@ -1,10 +1,10 @@
 <?php
 require_once "funciones.php";
-require_once "Cliente.php";
+require_once "cliente.php";
 
 $pdo = conectarBD();
 $query = $pdo->query("SELECT * FROM clientes");
-$query->setFetchMode(PDO::FETCH_CLASS, 'Cliente');
+$query->setFetchMode(PDO::FETCH_CLASS, 'cliente');
 $clientes = $query->fetchAll();
 desconectarBD($pdo);
 ?>

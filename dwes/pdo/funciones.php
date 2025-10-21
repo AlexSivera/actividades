@@ -4,7 +4,8 @@ function conectarBD()
     $host = 'localhost';
     $dbname = 'basedatos_clientes';
     $usuario = 'alex';
-    $password = '1234';
+    //$password = '1234';
+    $password = 'Alex1234!';
 
     try {
         $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $usuario, $password);
