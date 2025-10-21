@@ -1,88 +1,61 @@
 <?php
-// Cliente.php
 class Cliente
 {
     private $dni;
     private $nombre;
-    private $apellidos;
-    private $email;
-    private $telefono;
     private $direccion;
-    private $fecha_registro;
+    private $localidad;
+    private $correo;
+    private $telefono;
 
-    // Constructor opcional
-    public function __construct($dni = null, $nombre = null, $apellidos = null, $email = null, $telefono = null, $direccion = null, $fecha_registro = null)
-    {
-        $this->dni = $dni;
-        $this->nombre = $nombre;
-        $this->apellidos = $apellidos;
-        $this->email = $email;
-        $this->telefono = $telefono;
-        $this->direccion = $direccion;
-        $this->fecha_registro = $fecha_registro;
-    }
-
-    // Getters y Setters
     public function getDni()
     {
         return $this->dni;
     }
-    public function setDni($v)
-    {
-        $this->dni = $v;
-    }
-
     public function getNombre()
     {
         return $this->nombre;
     }
-    public function setNombre($v)
-    {
-        $this->nombre = $v;
-    }
-
-    public function getApellidos()
-    {
-        return $this->apellidos;
-    }
-    public function setApellidos($v)
-    {
-        $this->apellidos = $v;
-    }
-
-    public function getEmail()
-    {
-        return $this->email;
-    }
-    public function setEmail($v)
-    {
-        $this->email = $v;
-    }
-
-    public function getTelefono()
-    {
-        return $this->telefono;
-    }
-    public function setTelefono($v)
-    {
-        $this->telefono = $v;
-    }
-
     public function getDireccion()
     {
         return $this->direccion;
     }
-    public function setDireccion($v)
+    public function getLocalidad()
     {
-        $this->direccion = $v;
+        return $this->localidad;
+    }
+    public function getCorreo()
+    {
+        return $this->correo;
+    }
+    public function getTelefono()
+    {
+        return $this->telefono;
     }
 
-    public function getFechaRegistro()
+    public function setDni($dni)
     {
-        return $this->fecha_registro;
+        $this->dni = $dni;
     }
-    public function setFechaRegistro($v)
+    public function setNombre($nombre)
     {
-        $this->fecha_registro = $v;
+        $this->nombre = $nombre;
+    }
+    public function setDireccion($direccion)
+    {
+        $this->direccion = $direccion;
+    }
+    public function setLocalidad($localidad)
+    {
+        $this->localidad = $localidad;
+    }
+    public function setCorreo($correo)
+    {
+        $this->correo = $correo;
+    }
+    public function setTelefono($telefono)
+    {
+        $this->telefono = $telefono;
     }
 }
+?>

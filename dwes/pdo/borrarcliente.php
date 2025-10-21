@@ -1,62 +1,48 @@
 <?php
-// borrarcliente.php
-require_once 'funciones.php';
+require_once "funciones.php";
 
-$dni = $_GET['dni'] ?? '';
+$dni = $_GET["dni"] ?? null;
 if (!$dni) {
-    header('Location: index.php?msg=' . urlencode('DNI no especificado') . '&type=warning');
+    header("Location: index.php");
     exit;
 }
 
-$cliente = getClientByDni($dni);
+$pdo = conectarBD();
+$stmt = $pdo->prepare("SELECT nombre FROM clientes WHERE dni = :dni");
+$stmt->execute([':dni' => $dni]);
+$cliente = $stmt->fetch(PDO::FETCH_ASSOC);
+
 if (!$cliente) {
-    header('Location: index.php?msg=' . urlencode("Cliente con DNI $dni no encontrado") . '&type=warning');
+    echo "Cliente no encontrado.";
     exit;
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $confirm = $_POST['confirm'] ?? 'no';
-    if ($confirm === 'si') {
-        try {
-            $deleted = borrarCliente($dni);
-            if ($deleted) {
-                header('Location: index.php?msg=' . urlencode("Cliente " . $cliente->getNombre() . " eliminado correctamente") . '&type=success');
-                exit;
-            } else {
-                header('Location: index.php?msg=' . urlencode("No se pudo eliminar el cliente") . '&type=danger');
-                exit;
-            }
-        } catch (Exception $e) {
-            header('Location: index.php?msg=' . urlencode("Error al eliminar: " . $e->getMessage()) . '&type=danger');
-            exit;
-        }
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST["confirmar"])) {
+        $stmt = $pdo->prepare("DELETE FROM clientes WHERE dni = :dni");
+        $stmt->execute([':dni' => $dni]);
+        echo "<script>alert('Cliente {$cliente["nombre"]} eliminado correctamente'); window.location='index.php';</script>";
     } else {
-        header('Location: index.php?msg=' . urlencode('Borrado cancelado') . '&type=info');
-        exit;
+        header("Location: index.php");
     }
+    exit;
 }
 ?>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
-    <meta charset="utf-8">
-    <title>Borrar Cliente <?= htmlspecialchars($dni) ?></title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Borrar Cliente</title>
 </head>
 
-<body class="p-4">
-    <div class="container">
-        <h1>Confirmar borrado</h1>
-        <p>¿Deseas eliminar al cliente
-            <strong><?= htmlspecialchars($cliente->getNombre() . ' ' . $cliente->getApellidos()) ?></strong> con DNI
-            <strong><?= htmlspecialchars($dni) ?></strong>?</p>
-
-        <form method="post">
-            <button name="confirm" value="si" class="btn btn-danger">Sí, eliminar</button>
-            <button name="confirm" value="no" class="btn btn-secondary">No, cancelar</button>
-        </form>
-    </div>
+<body>
+    <h1>Eliminar Cliente</h1>
+    <p>¿Seguro que deseas eliminar al cliente <strong><?= $cliente["nombre"] ?></strong> (DNI: <?= $dni ?>)?</p>
+    <form method="post">
+        <button type="submit" name="confirmar">Sí, eliminar</button>
+        <button type="submit" name="cancelar">Cancelar</button>
+    </form>
 </body>
 
 </html>
