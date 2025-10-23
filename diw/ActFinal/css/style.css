@@ -1,3 +1,7 @@
+body {
+    font-family: Ubuntu, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif
+}
+
 .logo-container{
     display: flex;
     align-items: center;
@@ -7,18 +11,32 @@
     height: 40px;
 }
 
+.textLogo{
+    margin-left: 10px;
+    
+
+    }
+
+
 header{
     background-color: black;
     color: white;
     font-weight: bold;
-
 }
 
 .opcionesMenu {
+    display: flex;
     align-items: center;
+    font-size: 14px;
+    justify-content: flex-end; /* Alinear a la derecha */
+    height: 100%; /* Ocupar toda la altura del contenedor padre */
 }
 
-.opcionesMenu a {
-    justify-content: center;
+.opcionesMenu p {
+    margin: 0 15px; /* Espaciado entre opciones */
+    cursor: pointer; /* Cambiar cursor al pasar por encima */
+}
 
+.opcionesMenu p:hover {
+    color: #ccc; /* Efecto hover para mejor UX */
 }
