@@ -1,42 +1,77 @@
 body {
-    font-family: Ubuntu, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif
+    font-family: "Ubuntu", system-ui,"Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: radial-gradient(80vw circle at 50% 10%, #3a2099 17%, #480c59 100%);
+    position: relative;
+    min-height: 100vh;
+    margin: 0;
+    background-repeat: no-repeat;
+    
+
 }
 
-.logo-container{
+/* Capa del confeti por encima */
+body::before {
+
+    position: absolute;
+    background: url(/diw/ActFinal/img/confeti.svg) center/auto no-repeat;
+}
+
+
+
+.logo-container {
     display: flex;
     align-items: center;
 }
-.logo{
+
+.logo {
     width: 35px;
     height: 40px;
 }
 
-.textLogo{
+.textLogo {
     margin-left: 10px;
-    
-
-    }
+}
 
 
-header{
+header {
     background-color: black;
     color: white;
-    font-weight: bold;
+    font-weight: 800;
 }
 
 .opcionesMenu {
     display: flex;
     align-items: center;
-    font-size: 14px;
-    justify-content: flex-end; /* Alinear a la derecha */
-    height: 100%; /* Ocupar toda la altura del contenedor padre */
+    font-size: 13px;
+    height: 100%;
 }
 
 .opcionesMenu p {
-    margin: 0 15px; /* Espaciado entre opciones */
-    cursor: pointer; /* Cambiar cursor al pasar por encima */
+    margin: 0 15px;
+    cursor: pointer;
+    padding: 0 37px;
+    padding-left: 0px;
 }
 
 .opcionesMenu p:hover {
-    color: #ccc; /* Efecto hover para mejor UX */
+    color: #df7d22;
+}
+
+.main{
+    color: white;
+    text-align: center;
+    align-items: center;
+    padding-top: 78px;
+}
+
+#titol1{
+    font-size: 65px;   
+}
+
+#parraf1{
+    font-size: 28px;
+    justify-content: center;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: -30px;
 }
